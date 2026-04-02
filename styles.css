@@ -1,0 +1,294 @@
+:root {
+  --left-bg: #d7d7d7;
+  --right-bg: #060606;
+  --text-black: #101010;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--right-bg);
+  color: #fff;
+}
+
+.page {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.site-header {
+  position: absolute;
+  top: 26px;
+  left: 0;
+  width: 100%;
+  padding: 0 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+}
+
+.brand {
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border: 3px solid #111;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: #111;
+  font-weight: 700;
+  transform: skew(-12deg);
+}
+
+.brand-mark span {
+  transform: skew(12deg);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.contact-btn {
+  padding: 11px 20px;
+  background: #fff;
+  color: #111 !important;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.hero {
+  position: relative;
+  min-height: 78vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 30px;
+  padding: 130px 90px 0;
+  background: var(--right-bg);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(101deg, var(--left-bg) 0 49%, transparent 49.3% 100%);
+  z-index: 1;
+}
+
+.intro,
+.portrait-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.intro {
+  align-self: center;
+  max-width: 530px;
+  color: var(--text-black);
+}
+
+.hello {
+  margin: 0 0 10px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: 4.2rem;
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  color: #777;
+  font-size: 1.28rem;
+  font-weight: 600;
+}
+
+.socials {
+  margin-top: 58px;
+  display: flex;
+  gap: 14px;
+}
+
+.socials a {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #111;
+  background: #c8c8c8;
+  border: 1px solid #b0b0b0;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.14);
+  font-size: 1.2rem;
+}
+
+.portrait-wrap {
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: min(560px, 100%);
+}
+
+.portrait-wrap img {
+  width: min(560px, 100%);
+  max-height: 680px;
+  object-fit: contain;
+  display: block;
+}
+
+.photo-note {
+  margin: -58px 80px 0 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: #b5b5b5;
+  max-width: 210px;
+  text-transform: lowercase;
+}
+
+.berries {
+  position: relative;
+  background: linear-gradient(180deg, #212124, #151518);
+  padding: 34px 90px 44px;
+  overflow: hidden;
+}
+
+.berries h2 {
+  margin: 0 0 14px;
+  letter-spacing: 0.24em;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.berries p {
+  margin: 0;
+  color: #cccccc;
+  line-height: 1.85;
+  font-size: 0.84rem;
+  max-width: 900px;
+}
+
+.read-more {
+  margin-top: 22px;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0 12px;
+  position: relative;
+}
+
+.read-more::before,
+.read-more::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 24px;
+  background: #fff;
+}
+
+.read-more::before {
+  left: 0;
+}
+
+.read-more::after {
+  right: 0;
+}
+
+.berries-mark {
+  position: absolute;
+  right: -35px;
+  bottom: -118px;
+  font-size: 18rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.04);
+  transform: rotate(24deg);
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (max-width: 980px) {
+  .site-header {
+    position: static;
+    padding: 20px;
+    background: #111;
+  }
+
+  .brand-mark {
+    border-color: #fff;
+    color: #fff;
+  }
+
+  .nav a:not(.contact-btn) {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding: 30px 20px 0;
+    min-height: auto;
+  }
+
+  .hero::before {
+    background: linear-gradient(180deg, var(--left-bg) 0 62%, transparent 62% 100%);
+  }
+
+  .intro {
+    padding-top: 20px;
+    max-width: none;
+  }
+
+  .intro h1 {
+    font-size: 2.7rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .portrait-wrap {
+    justify-self: center;
+    align-items: center;
+  }
+
+  .photo-note {
+    margin: 8px 0 0;
+    text-align: center;
+  }
+
+  .berries {
+    padding: 30px 20px 42px;
+  }
+}
