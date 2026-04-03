@@ -39,22 +39,70 @@ body {
 
 .brand {
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .brand-mark {
-  width: 44px;
-  height: 44px;
-  border: 3px solid #111;
-  border-radius: 10px;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #111;
+  border-radius: 14px;
   display: grid;
   place-items: center;
   color: #111;
-  font-weight: 700;
   transform: skew(-12deg);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #f6f6f6 0%, #cccccc 100%);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
 }
 
-.brand-mark span {
-  transform: skew(12deg);
+.brand-mark::before {
+  content: "";
+  position: absolute;
+  top: -80%;
+  left: -45%;
+  width: 55%;
+  height: 230%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: rotate(18deg);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+
+.brand:hover .brand-mark {
+  transform: skew(-12deg) translateY(-3px);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.brand:hover .brand-mark::before {
+  transform: translateX(165%) rotate(18deg);
+}
+
+.brand-mark--logo .logo-svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  transform: skew(12deg); /* counter parent skew */
+  color: currentColor;
+  z-index: 1;
+}
+
+.brand-mark--logo .logo-svg path {
+  fill: currentColor;
+}
+
+.brand-text {
+  display: inline-block;
+  transform: skew(12deg); /* counter parent skew */
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: currentColor;
 }
 
 .nav {
@@ -64,10 +112,44 @@ body {
 }
 
 .nav a {
-  color: #fff;
+  position: relative;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.nav a:not(.contact-btn) {
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
+}
+
+.nav a:not(.contact-btn)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffffff 0%, #9fe8ff 50%, #ffffff 100%);
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: width 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.25s ease;
+}
+
+.nav a:not(.contact-btn):hover,
+.nav a:not(.contact-btn):focus-visible {
+  color: #fff;
+  transform: translateY(-2px);
+  text-shadow: 0 0 14px rgba(159, 232, 255, 0.4);
+  outline: none;
+}
+
+.nav a:not(.contact-btn):hover::after,
+.nav a:not(.contact-btn):focus-visible::after {
+  width: 100%;
+  opacity: 1;
 }
 
 .contact-btn {
@@ -76,6 +158,16 @@ body {
   color: #111 !important;
   border-radius: 999px;
   font-weight: 700;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.contact-btn:hover,
+.contact-btn:focus-visible {
+  transform: translateY(-2px);
+  background: #0f5560;
+  color: #fff !important;
+  box-shadow: 0 10px 22px rgba(15, 85, 96, 0.45);
+  outline: none;
 }
 
 .hero {
@@ -140,37 +232,131 @@ body {
   height: 46px;
   display: grid;
   place-items: center;
-  border-radius: 4px;
+  border-radius: 8px;
   text-decoration: none;
   color: #111;
   background: #c8c8c8;
   border: 1px solid #b0b0b0;
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.16);
   font-size: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0) scale(1);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+  animation: socialIn 0.55s cubic-bezier(0.2, 0.65, 0.25, 1) both;
+}
+
+.socials a:nth-child(1) { animation-delay: 0.05s; }
+.socials a:nth-child(2) { animation-delay: 0.12s; }
+.socials a:nth-child(3) { animation-delay: 0.19s; }
+
+.socials a::before {
+  content: "";
+  position: absolute;
+  inset: -40% auto -40% -55%;
+  width: 40%;
+  transform: rotate(20deg) translateX(0);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transition: transform 0.55s ease;
+}
+
+.socials a i {
+  transition: transform 0.25s ease;
+}
+
+.socials a:hover,
+.socials a:focus-visible {
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 14px 20px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+.socials a:hover::before,
+.socials a:focus-visible::before {
+  transform: rotate(20deg) translateX(240%);
+}
+
+.socials a:hover i,
+.socials a:focus-visible i {
+  transform: scale(1.12) rotate(-8deg);
+}
+
+/* platform-specific hover colors */
+.socials a[aria-label="Email"]:hover,
+.socials a[aria-label="Email"]:focus-visible {
+  background: #ea4335;
+  border-color: #ea4335;
+  color: #fff;
+}
+
+.socials a[aria-label="GitHub"]:hover,
+.socials a[aria-label="GitHub"]:focus-visible {
+  background: #181717;
+  border-color: #181717;
+  color: #fff;
+}
+
+.socials a[aria-label="LinkedIn"]:hover,
+.socials a[aria-label="LinkedIn"]:focus-visible {
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: #fff;
+}
+
+@keyframes socialIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socials a {
+    animation: none;
+    transition: none;
+  }
+}
+
+
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(101deg, var(--left-bg) 0 49%, transparent 49.3% 100%);
+  z-index: 1;
+}
+
+.intro {
+  padding-top: 20px;
+  max-width: none;
+}
+
+.intro h1 {
+  font-size: 2.7rem;
+}
+
+.subtitle {
+  font-size: 1rem;
 }
 
 .portrait-wrap {
-  justify-self: end;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: min(560px, 100%);
-}
-
-.portrait-wrap img {
-  width: min(560px, 100%);
-  max-height: 680px;
-  object-fit: contain;
-  display: block;
+  justify-self: center;
+  align-items: center;
 }
 
 .photo-note {
-  margin: -58px 80px 0 0;
-  font-size: 0.72rem;
-  line-height: 1.35;
-  color: #b5b5b5;
-  max-width: 210px;
-  text-transform: lowercase;
+  margin: 8px 0 0;
+  text-align: center;
 }
 
 .berries {
@@ -238,6 +424,53 @@ body {
   pointer-events: none;
 }
 
+.brand-mark--floral {
+  width: 82px;
+  height: 82px;
+  border-radius: 18px;
+  border: 1.5px solid rgba(170, 224, 236, 0.28);
+  background: radial-gradient(circle at 28% 20%, #0f5560 0%, #09323a 52%, #061e24 100%);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transform: none;
+}
+
+.brand-mark--floral::before {
+  display: none;
+}
+
+.logo-floral {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.logo-floral .divider {
+  stroke: rgba(242, 248, 250, 0.96);
+  stroke-width: 1.6;
+}
+
+.logo-floral .logo-s,
+.logo-floral .logo-k {
+  fill: #f5f8fa;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 600;
+}
+
+.logo-floral .logo-s { font-size: 56px; }
+.logo-floral .logo-k { font-size: 66px; }
+
+.logo-floral .sprigs path {
+  fill: none;
+  stroke: rgba(241, 247, 249, 0.9);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.brand:hover .brand-mark--floral {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(181, 233, 243, 0.22);
+}
+
 @media (max-width: 980px) {
   .site-header {
     position: static;
@@ -248,6 +481,8 @@ body {
   .brand-mark {
     border-color: #fff;
     color: #fff;
+    background: linear-gradient(145deg, #1a1a1a 0%, #0e0e0e 100%);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .nav a:not(.contact-btn) {
