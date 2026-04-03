@@ -8,78 +8,162 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="page">
+  <div class="page" id="home">
     <header class="site-header">
-      <a class="brand" href="#" aria-label="Sachin Khadka home">
-        <span class="brand-mark brand-mark--floral" aria-hidden="true">
-          <svg class="logo-floral" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <line class="divider" x1="58" y1="12" x2="58" y2="108" />
-            <text class="logo-s" x="20" y="48">S</text>
-            <text class="logo-k" x="63" y="95">K</text>
+      <a class="logo" href="#home">LOGO</a>
 
-            <g class="sprigs top">
-              <path d="M58 48 C66 46 73 39 76 30" />
-              <path d="M58 48 C68 49 78 44 84 35" />
-              <path d="M58 48 C66 54 75 56 84 53" />
-              <path d="M58 48 C63 45 67 40 69 34" />
-            </g>
-
-            <g class="sprigs bottom">
-              <path d="M58 74 C66 72 73 65 76 56" />
-              <path d="M58 74 C68 75 78 70 84 61" />
-              <path d="M58 74 C66 80 75 82 84 79" />
-              <path d="M58 74 C63 71 67 66 69 60" />
-            </g>
-          </svg>
-        </span>
-      </a>
-
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary">
+        <a class="active" href="#home">Home</a>
+        <a href="#services">Services</a>
         <a href="#about">About me</a>
-        <a href="#skills">Skills</a>
         <a href="#portfolio">Portfolio</a>
-        <a class="contact-btn" href="#contact">CONTACT ME</a>
+        <a href="#contact">Contact me</a>
       </nav>
+
+      <a class="top-cta" href="#contact">Hire Me</a>
     </header>
 
-    <section class="hero" id="about">
-      <div class="intro">
-        <p class="hello">Hi, I am</p>
-        <h1>Sachin Khadka
-        </h1>
-        <p class="subtitle">Front-end Developer</p>
+    <main class="hero">
+      <div class="hero-left">
+        <p class="eyebrow">Hi I am</p>
+        <h1 class="name">Sachin Khadka</h1>
+        <p class="role">UI/UX designer</p>
 
         <div class="socials">
-          <a href="mailto:you@example.com" aria-label="Email"><i class="fa-solid fa-at"></i></a>
-          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://dribbble.com/" target="_blank" rel="noopener" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+          <a href="https://behance.net/" target="_blank" rel="noopener" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Hire Me</a>
+          <a class="btn btn-outline" href="#">Download CV</a>
+        </div>
+
+        <div class="stats">
+          <article class="stat">
+            <h3>5+</h3>
+            <p>Experiences</p>
+          </article>
+          <article class="stat">
+            <h3>20+</h3>
+            <p>Project done</p>
+          </article>
+          <article class="stat">
+            <h3>80+</h3>
+            <p>Happy Clients</p>
+          </article>
         </div>
       </div>
 
-      <div class="portrait-wrap">
-        <img src="assets/profile.png" alt="Portrait of Sachin Khadka" />
-
+      <div class="hero-right">
+        <img class="profile-image" src="assets/profile.png" alt="Portrait of Sachin Khadka" />
       </div>
-    </section>
-
-    <section class="berries" id="portfolio">
-      <h2>IT STUDENT</h2>
-      <p>
-    A BIT (Hons) Computing student at Itahari International College with practical experience in 
-programming, web development, databases, and data analysis. Skilled in Java, Python, HTML/CSS, React, 
-Node.js, and networking (LAN/WAN, Cisco Packet Tracer, Windows Server 2022). Experienced in teamwork, 
-problem-solving, and communication through academic projects and innovation events like Futurama. Quick 
-learner, adaptable, and eager to apply technical skills in a professional internship while contributing positively 
-to organizational goals.
-      </p>
-      <a class="read-more" href="#">READ MORE</a>
-      <span class="berries-mark">IT</span>
-    </section>
+    </main>
   </div>
+
+  <section id="services" class="services-section">
+    <div class="section-head">
+      <p class="section-kicker">Services</p>
+      <h2>What I Do</h2>
+      <p class="section-lead">
+        I design modern, user-focused digital experiences that look clean and convert better.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+        <h3>UI Design</h3>
+        <p>Clean and scalable interfaces with strong visual hierarchy and brand consistency.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-object-group"></i></div>
+        <h3>UX Design</h3>
+        <p>Wireframes, user flows, and prototypes that make products easy and intuitive.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+        <h3>Web Design</h3>
+        <p>Responsive landing pages and websites optimized for clarity and performance.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <h3>App Design</h3>
+        <p>Mobile app interfaces for iOS and Android with consistent design systems.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <h3>UX Audit</h3>
+        <p>Find usability issues, reduce friction, and improve user journeys.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+        <h3>Brand Visuals</h3>
+        <p>Typography, color, and visual direction to keep your product memorable.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="about-media">
+      <div class="about-photo-wrap">
+        <img class="about-photo" src="assets/about.png" alt="Sachin Khadka portrait" />
+      </div>
+    </div>
+
+    <div class="about-content">
+      <p class="section-kicker">About Me</p>
+      <h2>I create clean, user-centered digital products that are easy to use and built to grow.</h2>
+      <p class="about-lead">
+        I am a UI/UX designer focused on clarity, usability, and visual consistency.
+        From research and wireframes to polished interfaces, I turn ideas into practical products.
+      </p>
+
+      <div class="about-points">
+        <article class="about-point">
+          <h3>Research-first process</h3>
+          <p>Clear user flows and structure before moving into high-fidelity UI.</p>
+        </article>
+        <article class="about-point">
+          <h3>System-driven design</h3>
+          <p>Reusable components and design systems for speed and consistency.</p>
+        </article>
+      </div>
+
+      <div class="about-skills">
+        <div class="skill">
+          <div class="skill-head"><span>UI Design</span><span>95%</span></div>
+          <div class="skill-bar"><span style="--level:95%"></span></div>
+        </div>
+        <div class="skill">
+          <div class="skill-head"><span>UX Design</span><span>90%</span></div>
+          <div class="skill-bar"><span style="--level:90%"></span></div>
+        </div>
+        <div class="skill">
+          <div class="skill-head"><span>Web Design</span><span>88%</span></div>
+          <div class="skill-bar"><span style="--level:88%"></span></div>
+        </div>
+      </div>
+
+      <div class="about-actions">
+        <a class="btn btn-primary" href="#contact">Let's Talk</a>
+        <a class="btn btn-outline" href="#portfolio">View Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="anchor-section" aria-hidden="true"></section>
+  <section id="contact" class="anchor-section" aria-hidden="true"></section>
 </body>
 </html>
