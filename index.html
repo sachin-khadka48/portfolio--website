@@ -164,6 +164,65 @@
   </section>
 
   <section id="portfolio" class="anchor-section" aria-hidden="true"></section>
-  <section id="contact" class="anchor-section" aria-hidden="true"></section>
+
+  <section id="contact" class="contact-section">
+    <div class="section-head">
+      <p class="section-kicker">Contact Me</p>
+      <h2>Let’s work together</h2>
+      <p class="section-lead">Tell me about your project and I’ll get back to you quickly.</p>
+    </div>
+
+    <div class="contact-layout">
+      <div class="contact-cards">
+        <a class="contact-card" href="mailto:sachin@example.com">
+          <i class="fa-solid fa-envelope"></i>
+          <div>
+            <h3>Email</h3>
+            <p>sachin@example.com</p>
+          </div>
+        </a>
+
+        <a class="contact-card" href="tel:+9779800000000">
+          <i class="fa-solid fa-phone"></i>
+          <div>
+            <h3>Phone</h3>
+            <p>+977 9800000000</p>
+          </div>
+        </a>
+
+        <a class="contact-card" href="https://maps.google.com/?q=Kathmandu,Nepal" target="_blank" rel="noopener">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <h3>Location</h3>
+            <p>Kathmandu, Nepal</p>
+          </div>
+        </a>
+      </div>
+
+      <form class="contact-form" action="#" method="post">
+        <div class="form-row">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" name="fullName" type="text" placeholder="Your full name" autocomplete="name" required />
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+
+        <div class="form-row">
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" type="text" placeholder="Project inquiry" required />
+        </div>
+
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
 </body>
 </html>
