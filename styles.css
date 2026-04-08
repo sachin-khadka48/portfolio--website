@@ -381,7 +381,7 @@ body {
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   align-items: center;
-  gap: 26px;
+  gap: 36px;
 }
 
 .about-media {
@@ -415,37 +415,50 @@ body {
 
 .about-content h2 {
   margin: 0;
-  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  font-size: clamp(2rem, 4vw, 2.6rem);
   line-height: 1.2;
 }
 
-.about-lead {
-  margin: 12px 0 0;
-  color: #aeb1ba;
-  line-height: 1.75;
+.about-quote {
+  display: block;
+  margin-top: 10px;
+  font-style: italic;
+  color: #ffbe86;
+  font-size: 1rem;
 }
 
 .about-points {
-  margin-top: 18px;
+  margin-top: 22px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 16px;
 }
 
 .about-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
   background: linear-gradient(180deg, var(--panel), var(--panel-2));
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 14px;
+  min-height: 90px;
+  transition: box-shadow 0.2s;
+}
+
+.about-point i {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-top: 2px;
 }
 
 .about-point h3 {
-  margin: 0;
+  margin: 0 0 4px 0;
   font-size: 1rem;
 }
 
 .about-point p {
-  margin: 6px 0 0;
+  margin: 0;
   color: #b6b8c0;
   font-size: 0.92rem;
   line-height: 1.6;
