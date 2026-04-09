@@ -31,7 +31,9 @@
       <div class="hero-left">
         <p class="eyebrow">Hi I am</p>
         <h1 class="name">Sachin Khadka</h1>
-        <p class="role">Front-End Developer</p>
+        <p class="role">
+          <span id="typing"></span>
+        </p>
 
         <div class="socials">
           <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -43,6 +45,7 @@
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Hire Me</a>
           <a class="btn btn-outline" href="asset/SachinKhadka_CV.pdf" target="_blank" rel="noopener">View CV</a>
+          <a class="btn btn-outline" href="asset/SachinKhadka_CV.pdf" download>Download CV</a>
         </div>
 
         <div class="stats">
@@ -237,9 +240,25 @@
       </article>
     </div>
 
+    <div class="projects-filters" style="margin-bottom:18px;display:flex;gap:10px;">
+      <button class="btn btn-outline" data-filter="all">All</button>
+      <button class="btn btn-outline" data-filter="HTML">HTML</button>
+      <button class="btn btn-outline" data-filter="CSS">CSS</button>
+      <button class="btn btn-outline" data-filter="JavaScript">JavaScript</button>
+      <button class="btn btn-outline" data-filter="React">React</button>
+    </div>
+
     <div class="projects-more">
       <a class="btn btn-outline" href="https://github.com/sachin-khadka48" target="_blank" rel="noopener">View All Projects</a>
     </div>
+  </section>
+
+  <section id="github-repos" class="projects-section">
+    <div class="section-head">
+      <p class="section-kicker">GitHub</p>
+      <h2>Latest Public Repositories</h2>
+    </div>
+    <div id="repos-list" class="projects-grid"></div>
   </section>
 
   <section id="contact" class="contact-section">
@@ -302,6 +321,87 @@
     </div>
   </section>
 
+  <button id="darkModeToggle" aria-label="Toggle dark mode" style="background:none;border:none;color:var(--accent);font-size:1.3rem;cursor:pointer;">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+
   <script src="animations.js"></script>
+<script>
+  // Typing animation
+  const roles = [
+    "Front-End Developer",
+    "React Enthusiast",
+    "UI/UX Lover",
+    "Web Developer"
+  ];
+  let roleIndex = 0, charIndex = 0, typing = true;
+  const typingSpan = document.getElementById("typing");
+
+  function typeRole() {
+    if (!typingSpan) return;
+    if (typing) {
+      if (charIndex < roles[roleIndex].length) {
+        typingSpan.textContent += roles[roleIndex][charIndex++];
+        setTimeout(typeRole, 80);
+      } else {
+        typing = false;
+        setTimeout(typeRole, 1200);
+      }
+    } else {
+      if (charIndex > 0) {
+        typingSpan.textContent = roles[roleIndex].substring(0, --charIndex);
+        setTimeout(typeRole, 40);
+      } else {
+        typing = true;
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeRole, 400);
+      }
+    }
+  }
+  typeRole();
+</script>
+<script>
+  // GitHub Repos
+  fetch('https://api.github.com/users/sachin-khadka48/repos?sort=updated&per_page=3')
+    .then(res => res.json())
+    .then(repos => {
+      const list = document.getElementById('repos-list');
+      if (!list) return;
+      list.innerHTML = repos.map(repo => `
+        <article class="project-card">
+          <h3>${repo.name}</h3>
+          <p>${repo.description || ''}</p>
+          <div class="project-actions">
+            <a class="btn btn-outline" href="${repo.html_url}" target="_blank" rel="noopener">View Repo</a>
+          </div>
+        </article>
+      `).join('');
+    });
+</script>
+<script>
+  // Dark mode toggle
+  const toggle = document.getElementById('darkModeToggle');
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    toggle.innerHTML = document.body.classList.contains('light-mode')
+      ? '<i class="fa-solid fa-sun"></i>'
+      : '<i class="fa-solid fa-moon"></i>';
+  });
+</script>
+<script>
+  // Project filtering
+  document.querySelectorAll('.projects-filters button').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.project-card').forEach(card => {
+        if (filter === 'all' || card.innerHTML.includes(filter)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>

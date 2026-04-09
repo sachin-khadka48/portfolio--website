@@ -6,6 +6,10 @@
   --muted: #8f9097;
   --line: #2a2c33;
   --accent: #ff7a00;
+  --gradient-hero: linear-gradient(120deg, #17181d 60%, #1a1b20 100%);
+  --gradient-about: linear-gradient(135deg, #17181d 70%, #23242a 100%);
+  --gradient-projects: linear-gradient(120deg, #17181d 60%, #23242a 100%);
+  --gradient-contact: linear-gradient(120deg, #1b1d24 60%, #12141a 100%);
 }
 
 * {
@@ -23,11 +27,25 @@ body {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Inter", sans-serif;
   color: var(--text);
   background:
     radial-gradient(55% 55% at 12% 56%, rgba(255, 122, 0, 0.22) 0%, rgba(255, 122, 0, 0) 62%),
     var(--bg);
+}
+
+body.light-mode {
+  --bg: #f7f7fa;
+  --panel: #fff;
+  --panel-2: #f3f4f8;
+  --text: #18181b;
+  --muted: #6d6e73;
+  --line: #e2e3e8;
+  --accent: #ff7a00;
+  --gradient-hero: linear-gradient(120deg, #fff 60%, #f3f4f8 100%);
+  --gradient-about: linear-gradient(135deg, #fff 70%, #f3f4f8 100%);
+  --gradient-projects: linear-gradient(120deg, #fff 60%, #e9eaf3 100%);
+  --gradient-contact: linear-gradient(120deg, #f7f7fa 60%, #fff 100%);
 }
 
 .page {
@@ -42,6 +60,10 @@ body {
   align-items: center;
   gap: 24px;
   padding: 8px 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
 }
 
 .logo {
@@ -115,6 +137,7 @@ body {
   align-items: center;
   gap: 20px;
   position: relative;
+  background: var(--gradient-hero);
 }
 
 .hero-left {
@@ -292,6 +315,7 @@ body {
   max-width: 1240px;
   margin: 0 auto;
   padding: 34px 34px 90px;
+  background: var(--panel);
 }
 
 .section-head {
