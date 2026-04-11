@@ -336,7 +336,10 @@
   ];
   let roleIndex = 0, charIndex = 0, typing = true;
   const typingSpan = document.getElementById("typing");
-
+  const cursor = document.getElementById("cursor");
+  setIntervel(() => {
+    if (cursor) cursor.style.opacity = cursor.style.opacity === "0" ? "1" : "0";
+  }, 500);
   function typeRole() {
     if (!typingSpan) return;
     if (typing) {

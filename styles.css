@@ -137,7 +137,23 @@ body.light-mode {
   align-items: center;
   gap: 20px;
   position: relative;
-  background: var(--gradient-hero);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 60% 40%, #ff7a0033 0%, transparent 70%),
+              radial-gradient(ellipse at 20% 80%, #ffa44f22 0%, transparent 80%);
+  animation: heroBgMove 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes heroBgMove {
+  0% { background-position: 60% 40%, 20% 80%; }
+  100% { background-position: 65% 45%, 25% 85%; }
 }
 
 .hero-left {
@@ -150,6 +166,19 @@ body.light-mode {
   color: #a9a9af;
   font-size: 2rem;
   font-weight: 500;
+  display: inline-block;
+  position: relative;
+}
+
+.eyebrow::after {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #ffa44f);
+  border-radius: 2px;
+  margin-top: 5px;
+  margin-left: 2px;
 }
 
 .name {
@@ -157,6 +186,7 @@ body.light-mode {
   color: #d6d6da;
   font-size: clamp(2rem, 3.2vw, 2.9rem);
   font-weight: 600;
+  text-shadow: 0 2px 18px #ff7a0033, 0 1px 0 #fff1;
 }
 
 .role {
@@ -189,7 +219,8 @@ body.light-mode {
 .socials a:hover {
   color: #fff;
   border-color: var(--accent);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.13) rotate(-6deg);
+  box-shadow: 0 4px 18px #ff7a0033;
 }
 
 .hero-actions {
@@ -212,6 +243,12 @@ body.light-mode {
 .btn-primary {
   background: var(--accent);
   color: #fff;
+  animation: btnPulse 2.2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes btnPulse {
+  0%, 100% { box-shadow: 0 0 0 0 #ff7a0033; }
+  50% { box-shadow: 0 0 0 10px #ff7a0022; }
 }
 
 .btn-primary:hover {
@@ -982,9 +1019,15 @@ body.light-mode {
   background: linear-gradient(180deg, #1b1d24, #11131a);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
   opacity: 0;
-  transform: translateY(18px);
-  animation: projectCardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease, box-shadow 0.28s ease;
+  transform: translateY(30px);
+  animation: heroFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .project-card:nth-child(1) { animation-delay: 0.08s; }
